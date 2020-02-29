@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
 import './App.css';
-import Stage1 from './stage 1.jpg';
-import Stage2 from './stage 2.jpg';
-import Stage3 from './stage 3.jpg';
+import Stage_1_Happy from './Images/stage 1 happy.jpg';
+import Stage_1_Sad from './Images/stage 1 sad.jpg';
+import Stage_2_Happy from './Images/stage 2 happy.jpg';
+import Stage_2_Sad from './Images/stage 2 sad.jpg';
+import Stage_25_Happy from './Images/stage 2.5 happy.jpg';
+import Stage_25_Sad from './Images/stage 2.5 sad.jpg';
+import Stage_3_Happy from './Images/stage 3 happy.jpg';
+import Stage_3_Sad from './Images/stage 3 sad.jpg';
+import Stage_5_Happy from './Images/stage 5 happy.jpg';
+import Stage_5_Sad from './Images/stage 5 sad.jpg';
 import SpeechRecognition from "react-speech-recognition";
 
 
@@ -14,7 +21,7 @@ const options = {
 class Dictaphone extends Component {
   state = {
     sentiment: "",
-    image: Stage1,
+    image: Stage_1_Happy,
     level: 0,
     response: ""
   }
@@ -24,27 +31,72 @@ class Dictaphone extends Component {
     this.updatePlant = this.updatePlant.bind(this)
   }
 
-  async updatePlant(){
+  updatePlant(){
     let increment = this.state.sentiment;
+    console.log(increment)
     increment = parseInt(Number(increment));
-    if(increment === 0){
-      this.setState({response: "That didn't sound very positive :( - try again"})
-    } else {
-      this.setState({response: "That's great! Keep it up :)"})
-    }
+    
     const newLevel = this.state.level + increment;
+
+    console.log(newLevel)
+    /*
     switch(newLevel){
-      case 0:
-        this.setState({image: Stage1})
-        break;
       case 1:
-        this.setState({image: Stage2})
-        break;
+        if(increment === 0){
+          this.setState({image: Stage_1_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
+        } else {
+          this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+        }
+      break;
       case 2:
-        this.setState({image: Stage3})
-        break;
+        if(increment === 0){
+          this.setState({image: Stage_2_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
+        } else {
+          this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+        }
+      break;
+      case 3:
+        if(increment === 0){
+          this.setState({image: Stage_1_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
+        } else {
+          this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+        }
+      break;
+      case 4:
+        if(increment === 0){
+          this.setState({image: Stage_1_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
+        } else {
+          this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+        }
+      break;
+      case 5:
+        if(increment === 0){
+          this.setState({image: Stage_1_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
+        } else {
+          this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+        }
+      break;
     }
-    this.setState({level: newLevel})
+    */
+    if(increment === 0 && newLevel === 0){
+      this.setState({image: Stage_1_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
+    } else if(increment === 1 && newLevel === 1){
+      this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+    }else if(increment === 0 && newLevel === 1){
+      this.setState({image: Stage_2_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+    }else if(increment === 1 && newLevel === 2){
+      this.setState({image: Stage_25_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+    }else if(increment === 0 && newLevel === 2){
+      this.setState({image: Stage_25_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+    }else if(increment === 1 && newLevel === 3){
+      this.setState({image: Stage_3_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+    }else if(increment === 0 && newLevel === 3){
+      this.setState({image: Stage_3_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+    }else if(increment === 1 && newLevel === 4){
+      this.setState({image: Stage_5_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+    }else if(increment === 0 && newLevel === 4){
+      this.setState({image: Stage_5_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+    }
   }
 
   handleSend(transcript) {
@@ -52,7 +104,7 @@ class Dictaphone extends Component {
     xhr.addEventListener('load', () => {
       // update the state of the component with the result here
       const text = xhr.responseText // extract value returned from chatbot.py
-      this.setState({sentiment: text})   // update state with this value
+      this.setState({sentiment: text}, () => {this.updatePlant();})   // update state with this value
     })
     xhr.open('POST', 'http://localhost:3030/')
     xhr.send(JSON.stringify(transcript)) // recordedBlob is string that should be analysed
@@ -66,15 +118,25 @@ class Dictaphone extends Component {
     return (
       <React.Fragment>
         <div className = "global">
+          <div className = "title">
+            Welcome to PositviTree
+          </div>
           <img className = "images" src = {this.state.image}></img>
           <div className="buttons">
             <button onClick={startListening} className = "btn btn-m m-2 btn-success" type="button">Start</button>
             <div className = "button-left">
-              <button onClick={() => {stopListening(); this.updatePlant(); this.handleSend(finalTranscript);}} className = "btn btn-m m-2 btn-success" type="button">Stop</button>
+              <button onClick={() => {stopListening(); this.handleSend(finalTranscript);}} className = "btn btn-m m-2 btn-success" type="button">Stop</button>
             </div>
           </div>
-          <div>{finalTranscript}</div>
-          <div>{this.state.response}</div>
+          <div className = "text">
+            You: {finalTranscript}
+          </div>
+          <div className="text">
+            Plant: {this.state.response}
+          </div>
+          <div className = "sentiment">
+            {this.state.sentiment}
+          </div>
         </div>
       </React.Fragment>
     )

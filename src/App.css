@@ -15,6 +15,20 @@
   padding-left: 30px;
 }
 
+.text {
+  font-family: Garamond;
+  font-size: 40px;
+}
+
+.title {
+  font-family: Garamond;
+  font-size: 80px;
+}
+
+.sentiment {
+  color: black;
+}
+
 .images {
   height: 50vmin;
 }

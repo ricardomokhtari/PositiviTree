@@ -11,7 +11,7 @@ sentiment_attributes = sentiment_object.polarity_scores(sentence)
 rating = sentiment_attributes['compound']
 
 bin_rating = None
-if rating < 0:
+if rating <= 0:
     bin_rating = "0"
 elif rating > 0:
     bin_rating = "1"
