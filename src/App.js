@@ -12,9 +12,18 @@ const options = {
 }
 
 class Dictaphone extends Component {
+  state = {
+    sentiment: ""
+  }
 
   handleSend(transcript) {
     var xhr = new XMLHttpRequest()
+    xhr.addEventListener('load', () => {
+      // update the state of the component with the result here
+      console.log(xhr.responseText) // for debugging
+      const text = xhr.responseText // extract value returned from chatbot.py
+      this.setState({sentiment: text})   // update state with this value
+    })
     xhr.open('POST', 'http://localhost:3030/')
     xhr.send(JSON.stringify(transcript)) // recordedBlob is string that should be analysed
   }
@@ -30,7 +39,8 @@ class Dictaphone extends Component {
           <img className = "images" src = {Stage1}></img>
           <button onClick={startListening} className = "btn btn-success" type="button">Start</button>
           <button onClick={stopListening, resetTranscript, () => this.handleSend(finalTranscript)} className = "btn btn-success" type="button">Stop</button>
-          <span>{finalTranscript}</span>
+          <div>{finalTranscript}</div>
+          <div>{this.state.sentiment}</div>
         </div>
       </React.Fragment>
     )

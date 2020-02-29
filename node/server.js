@@ -1,4 +1,10 @@
 const http = require('http');
+var util = require("util");
+var path = require("path");
+// spawn_python.js
+var thing = path.join(__dirname, '..', 'backend/basic_sent_anal.py');
+var spawn = require("child_process").spawn;
+
 
 // Create an instance of the http server to handle HTTP requests
 let app = http.createServer((req, res) => {
@@ -12,13 +18,25 @@ let app = http.createServer((req, res) => {
 
     var datas = []
     // Send back a response and end the connection
-    res.end('Hello World!\n');
+
     req.on('data', (d) => {
         datas.push(d)
     }).on('end', () => {
         // calling child spawn process here.
         let buffer = datas[datas.length - 1].toString('utf-8');
         console.log(buffer)
+        var process = spawn('python',[thing]);
+        var script_output = []
+        process.stdout.on('data', (data) => {
+            console.log("(python) stdout: " + data.toString())
+            script_output.push(data.toString())
+        });
+        process.on('exit', (code, signal) => {
+          for (let i = 0; i < script_output.length; i++) {
+              res.write(script_output[i])
+          }
+          res.end();
+        });
     })
 });
 
