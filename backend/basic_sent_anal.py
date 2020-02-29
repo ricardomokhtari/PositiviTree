@@ -3,9 +3,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import spacy 
 from spacy.matcher import Matcher
 
-#user_imput = sys.argv[1]
-
-user_input = 'i was generally having a good day and love my family sometimes i want to commit suicide though'
+user_imput = sys.argv[1]
 
 sentence = user_input
 
@@ -37,16 +35,11 @@ if not phrase_matches:
 else:
     concern_flag = 1
 
-<<<<<<< HEAD
-=======
-user_input = sys.argv[1]
-
-sentence = user_input
->>>>>>> e62e83e549a030b5504808fef5ce1c6cc6c7c639
 
 sentiment_object = SentimentIntensityAnalyzer()
 
 sentiment_attributes = sentiment_object.polarity_scores(sentence)
+
 
 rating = sentiment_attributes['compound']+0.001
 
@@ -56,12 +49,9 @@ if rating < 0:
 elif rating > 0:
     bin_rating = 1
 
-<<<<<<< HEAD
 print(bin_rating)
 print(concern_flag)
-#sys.stdout.flush()
+
+sys.stdout.flush()
 
 
-=======
-print(str(bin_rating))
->>>>>>> e62e83e549a030b5504808fef5ce1c6cc6c7c639
