@@ -18,11 +18,12 @@ export class Example extends Component {
   }
 
   onData(recordedBlob) {
-    console.log('Data ', recordedBlob);
+    console.log('Data:', recordedBlob);
+
   }
 
   onStop(recordedBlob) {
-    console.log('recordedBlob is: ', recordedBlob);
+    console.log('Final:', recordedBlob);
   }
 
   render() {
@@ -33,12 +34,10 @@ export class Example extends Component {
           className="sound-wave"
           onStop={this.onStop}
           onData={this.onData}
-          strokeColor="#61dafb"
-          backgroundColor="#282c34"
+          strokeColor="black"
+          backgroundColor = "#f8f79a"
           mimeType="audio/wav" />
           <br></br>
-        <button onClick={this.startRecording} type="button">Start</button>
-        <button onClick={this.stopRecording} type="button">Stop</button>
       </div>
     );
   }
