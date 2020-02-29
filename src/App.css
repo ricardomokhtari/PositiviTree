@@ -26,6 +26,10 @@
   justify-content: center;
 }
 
+.images {
+  height: 80vmin;
+}
+
 .App-link {
   color: #61dafb;
 }

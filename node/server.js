@@ -14,7 +14,7 @@ const request = {
 
 // Create an instance of the http server to handle HTTP requests
 let app = http.createServer((req, res) => {
-     // Access
+    // Access
     
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

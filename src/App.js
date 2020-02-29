@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
 import Example from './components/ReactMic.jsx';
-import Plant from './unnamed.png';
+import Stage1 from './stage 1.jpg';
+import Stage2 from './stage 2.jpg';
 
 function App() {
   return (
     <React.Fragment>
       <div className = "global">
-          <img src = {Plant}></img>
+          <img className = "images" src = {Stage1}></img>
           <Example/>
       </div>
     </React.Fragment>
