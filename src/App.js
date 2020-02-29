@@ -89,7 +89,7 @@ class Dictaphone extends Component {
       <React.Fragment>
         <div className = "global">
           <div className = "title">
-            Welcome to PositviTree
+            Welcome to PositiviTree
           </div>
           <img className = "images" src = {this.state.image}></img>
           <div className="buttons">
