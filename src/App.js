@@ -38,7 +38,7 @@ class Dictaphone extends Component {
         this.setState({image: Stage3})
         break;
     }
-    await this.setState({level: newLevel})
+    this.setState({level: newLevel})
   }
 
   handleSend(transcript) {
@@ -62,9 +62,9 @@ class Dictaphone extends Component {
         <div className = "global">
           <img className = "images" src = {this.state.image}></img>
           <div className="buttons">
-            <button onClick={startListening} className = "btn btn-success" type="button">Start</button>
+            <button onClick={startListening} className = "btn btn-m m-2 btn-success" type="button">Start</button>
             <div className = "button-left">
-              <button onClick={() => {stopListening(); this.updatePlant(); this.handleSend(finalTranscript);}} className = "btn btn-success" type="button">Stop</button>
+              <button onClick={() => {stopListening(); this.updatePlant(); this.handleSend(finalTranscript);}} className = "btn btn-m m-2 btn-success" type="button">Stop</button>
             </div>
           </div>
           <div>{finalTranscript}</div>
