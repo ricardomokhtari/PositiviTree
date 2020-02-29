@@ -40,32 +40,49 @@ class Dictaphone extends Component {
     
     const newLevel = this.state.level + increment;
 
+    const positiveResponse = [
+      "That's great! Keep it coming.",
+      "Sounds amazing!",
+      "That's positive!",
+      "Sounds great",
+      "Things are looking up!",
+      "Well done!",
+      "You should feel good about this.",
+    ]
+    const negativeResponse = [
+      "That didn't sound very positive :( - Try again?",
+      "That's unfortunate. Let's hear something encouraging.",
+      "What's a good thing that happened today?",
+      "What are you looking forward to over the next month?",
+      "What would you do if you had more freedom?",
+  ]
+    
     if(increment === 0 && newLevel === 0){
-      this.setState({image: Stage_1_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
+      this.setState({image: Stage_1_Sad, response: negativeResponse[Math.floor(Math.random() * negativeResponse.length)], level: newLevel})
     } else if(increment === 1 && newLevel === 1){
-      this.setState({image: Stage_15_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+      this.setState({image: Stage_15_Happy, level: newLevel, response: positiveResponse[Math.floor(Math.random() * positiveResponse.length)]})
     } else if(increment === 0 && newLevel === 1){
-      this.setState({image: Stage_15_Sad, level: newLevel, response: "That's great! Keep it up :)"})
+      this.setState({image: Stage_15_Sad, level: newLevel, response: negativeResponse[Math.floor(Math.random() * negativeResponse.length)]})
     } else if(increment === 1 && newLevel === 2){
-      this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+      this.setState({image: Stage_2_Happy, level: newLevel, response: positiveResponse[Math.floor(Math.random() * positiveResponse.length)]})
     }else if(increment === 0 && newLevel === 2){
-      this.setState({image: Stage_2_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+      this.setState({image: Stage_2_Sad, level: newLevel, response: negativeResponse[Math.floor(Math.random() * negativeResponse.length)]})
     }else if(increment === 1 && newLevel === 3){
-      this.setState({image: Stage_25_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+      this.setState({image: Stage_25_Happy, level: newLevel, response: positiveResponse[Math.floor(Math.random() * positiveResponse.length)]})
     }else if(increment === 0 && newLevel === 3){
-      this.setState({image: Stage_25_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+      this.setState({image: Stage_25_Sad, level: newLevel, response: negativeResponse[Math.floor(Math.random() * negativeResponse.length)]})
     }else if(increment === 1 && newLevel === 4){
-      this.setState({image: Stage_3_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+      this.setState({image: Stage_3_Happy, level: newLevel, response: positiveResponse[Math.floor(Math.random() * positiveResponse.length)]})
     }else if(increment === 0 && newLevel === 4){
-      this.setState({image: Stage_3_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+      this.setState({image: Stage_3_Sad, level: newLevel, response: negativeResponse[Math.floor(Math.random() * negativeResponse.length)]})
     }else if(increment === 1 && newLevel === 5){
-      this.setState({image: Stage_4_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+      this.setState({image: Stage_4_Happy, level: newLevel, response: positiveResponse[Math.floor(Math.random() * positiveResponse.length)]})
     }else if(increment === 0 && newLevel === 5){
-      this.setState({image: Stage_4_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+      this.setState({image: Stage_4_Sad, level: newLevel, response: negativeResponse[Math.floor(Math.random() * negativeResponse.length)]})
     }else if(increment === 1 && newLevel === 6){
-      this.setState({image: Stage_5_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+      this.setState({image: Stage_5_Happy, level: newLevel, response: positiveResponse[Math.floor(Math.random() * positiveResponse.length)]})
     }else if(increment === 0 && newLevel === 6){
-      this.setState({image: Stage_5_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+      this.setState({image: Stage_5_Sad, level: newLevel, response: negativeResponse[Math.floor(Math.random() * negativeResponse.length)]})
     }
   }
 
