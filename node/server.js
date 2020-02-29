@@ -16,8 +16,10 @@ let app = http.createServer((req, res) => {
     req.on('data', (d) => {
         datas.push(d)
     }).on('end', () => {
-        console.log(JSON.stringify(datas))
         // calling child spawn process here.
+        console.log(datas[datas.length - 1])
+        let buffer = datas[datas.length - 1].toString('utf-8');
+        console.log(buffer)
     })
 });
 
