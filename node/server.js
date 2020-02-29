@@ -25,7 +25,7 @@ let app = http.createServer((req, res) => {
         // calling child spawn process here.
         let buffer = datas[datas.length - 1].toString('utf-8');
         console.log(buffer)
-        var process = spawn('python',[thing]);
+        var process = spawn('python',[thing, buffer]);
         var script_output = []
         process.stdout.on('data', (data) => {
             console.log("(python) stdout: " + data.toString())
