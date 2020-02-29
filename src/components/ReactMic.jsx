@@ -18,11 +18,14 @@ export class Example extends Component {
   }
 
   onData(recordedBlob) {
-    console.log('Data ', recordedBlob);
+    console.log('Data:', recordedBlob);
+    var xhr = new XMLHttpRequest()
+    xhr.open('POST', 'http://localhost:3030/')
+    xhr.send(recordedBlob)
   }
 
   onStop(recordedBlob) {
-    console.log('recordedBlob is: ', recordedBlob);
+    console.log('Final:', recordedBlob);
   }
 
   render() {
