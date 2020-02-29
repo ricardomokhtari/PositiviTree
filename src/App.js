@@ -2,16 +2,19 @@ import React, {Component} from 'react';
 import './App.css';
 import Stage_1_Happy from './Images/stage 1 happy.jpg';
 import Stage_1_Sad from './Images/stage 1 sad.jpg';
+import Stage_15_Happy from './Images/stage 1.5 happy.jpg';
+import Stage_15_Sad from './Images/stage 1.5 sad.jpg';
 import Stage_2_Happy from './Images/stage 2 happy.jpg';
 import Stage_2_Sad from './Images/stage 2 sad.jpg';
 import Stage_25_Happy from './Images/stage 2.5 happy.jpg';
 import Stage_25_Sad from './Images/stage 2.5 sad.jpg';
 import Stage_3_Happy from './Images/stage 3 happy.jpg';
 import Stage_3_Sad from './Images/stage 3 sad.jpg';
+import Stage_4_Happy from './Images/stage 4 happy.jpg';
+import Stage_4_Sad from './Images/stage 4 sad.jpg';
 import Stage_5_Happy from './Images/stage 5 happy.jpg';
 import Stage_5_Sad from './Images/stage 5 sad.jpg';
 import SpeechRecognition from "react-speech-recognition";
-
 
 const options = {
   autoStart: false,
@@ -33,68 +36,35 @@ class Dictaphone extends Component {
 
   updatePlant(){
     let increment = this.state.sentiment;
-    console.log(increment)
     increment = parseInt(Number(increment));
     
     const newLevel = this.state.level + increment;
 
-    console.log(newLevel)
-    /*
-    switch(newLevel){
-      case 1:
-        if(increment === 0){
-          this.setState({image: Stage_1_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
-        } else {
-          this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
-        }
-      break;
-      case 2:
-        if(increment === 0){
-          this.setState({image: Stage_2_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
-        } else {
-          this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
-        }
-      break;
-      case 3:
-        if(increment === 0){
-          this.setState({image: Stage_1_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
-        } else {
-          this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
-        }
-      break;
-      case 4:
-        if(increment === 0){
-          this.setState({image: Stage_1_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
-        } else {
-          this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
-        }
-      break;
-      case 5:
-        if(increment === 0){
-          this.setState({image: Stage_1_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
-        } else {
-          this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
-        }
-      break;
-    }
-    */
     if(increment === 0 && newLevel === 0){
       this.setState({image: Stage_1_Sad, response: "That didn't sound very positive :( - try again?", level: newLevel})
     } else if(increment === 1 && newLevel === 1){
+      this.setState({image: Stage_15_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+    } else if(increment === 0 && newLevel === 1){
+      this.setState({image: Stage_15_Sad, level: newLevel, response: "That's great! Keep it up :)"})
+    } else if(increment === 1 && newLevel === 2){
       this.setState({image: Stage_2_Happy, level: newLevel, response: "That's great! Keep it up :)"})
-    }else if(increment === 0 && newLevel === 1){
-      this.setState({image: Stage_2_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
-    }else if(increment === 1 && newLevel === 2){
-      this.setState({image: Stage_25_Happy, level: newLevel, response: "That's great! Keep it up :)"})
     }else if(increment === 0 && newLevel === 2){
-      this.setState({image: Stage_25_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+      this.setState({image: Stage_2_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
     }else if(increment === 1 && newLevel === 3){
-      this.setState({image: Stage_3_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+      this.setState({image: Stage_25_Happy, level: newLevel, response: "That's great! Keep it up :)"})
     }else if(increment === 0 && newLevel === 3){
-      this.setState({image: Stage_3_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+      this.setState({image: Stage_25_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
     }else if(increment === 1 && newLevel === 4){
-      this.setState({image: Stage_5_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+      this.setState({image: Stage_3_Happy, level: newLevel, response: "That's great! Keep it up :)"})
     }else if(increment === 0 && newLevel === 4){
+      this.setState({image: Stage_3_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+    }else if(increment === 1 && newLevel === 5){
+      this.setState({image: Stage_4_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+    }else if(increment === 0 && newLevel === 5){
+      this.setState({image: Stage_4_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
+    }else if(increment === 1 && newLevel === 6){
+      this.setState({image: Stage_5_Happy, level: newLevel, response: "That's great! Keep it up :)"})
+    }else if(increment === 0 && newLevel === 6){
       this.setState({image: Stage_5_Sad, level: newLevel, response: "That didn't sound very positive :( - try again?"})
     }
   }

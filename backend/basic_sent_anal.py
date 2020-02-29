@@ -8,7 +8,7 @@ sentence = user_input
 sentiment_object = SentimentIntensityAnalyzer()
 
 sentiment_attributes = sentiment_object.polarity_scores(sentence)
-rating = sentiment_attributes['compound']
+rating = sentiment_attributes['compound']+1
 
 bin_rating = None
 if rating <= 0:
