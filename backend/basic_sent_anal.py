@@ -1,6 +1,9 @@
+import sys
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-sentence = "i love myself"
+user_input = sys.argv[1]
+
+sentence = user_input
 
 sentiment_object = SentimentIntensityAnalyzer()
 
@@ -19,3 +22,5 @@ elif rating > 0:
     bin_rating = 1
 
 print(bin_rating)
+
+sys.stdout.flush()
