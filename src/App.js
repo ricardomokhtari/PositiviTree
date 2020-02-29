@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 import Example from './components/ReactMic.jsx';
-import Stage1 from './stage 1.jpg';
-import Stage2 from './stage 2.jpg';
+import Stage1 from './images/stage 1.jpg';
+import Stage2 from './images/stage 2.jpg';
+import Stage3 from './images/stage 3.jpg';
 import PropTypes from "prop-types";
 import SpeechRecognition from "react-speech-recognition";
 
