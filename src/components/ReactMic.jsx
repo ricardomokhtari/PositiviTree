@@ -1,29 +1,24 @@
 import React, { Component } from 'react';
 import { ReactMic } from 'react-mic';
 
-export class AudioRecorder extends Component {
+export class Example extends Component {
   constructor(props) {
     super(props);
     this.state = {
       record: false
     }
-
   }
 
   startRecording = () => {
-    this.setState({
-      record: true
-    });
+    this.setState({ record: true });
   }
 
   stopRecording = () => {
-    this.setState({
-      record: false
-    });
+    this.setState({ record: false });
   }
 
   onData(recordedBlob) {
-    console.log('chunk of real-time data is: ', recordedBlob);
+    console.log('Data ', recordedBlob);
   }
 
   onStop(recordedBlob) {
@@ -38,13 +33,15 @@ export class AudioRecorder extends Component {
           className="sound-wave"
           onStop={this.onStop}
           onData={this.onData}
-          strokeColor="#000000"
-          backgroundColor="#FF4081" />
-        <button onTouchTap={this.startRecording} type="button">Start</button>
-        <button onTouchTap={this.stopRecording} type="button">Stop</button>
+          strokeColor="#61dafb"
+          backgroundColor="#282c34"
+          mimeType="audio/wav" />
+          <br></br>
+        <button onClick={this.startRecording} type="button">Start</button>
+        <button onClick={this.stopRecording} type="button">Stop</button>
       </div>
     );
   }
 }
 
-export default AudioRecorder;
+export default Example
