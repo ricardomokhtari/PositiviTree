@@ -15,7 +15,8 @@ class Dictaphone extends Component {
   state = {
     sentiment: "",
     image: Stage1,
-    level: 0
+    level: 0,
+    response: ""
   }
 
   constructor(props){
@@ -26,6 +27,11 @@ class Dictaphone extends Component {
   async updatePlant(){
     let increment = this.state.sentiment;
     increment = parseInt(Number(increment));
+    if(increment === 0){
+      this.setState({response: "That didn't sound very positive :( - try again"})
+    } else {
+      this.setState({response: "That's great! Keep it up :)"})
+    }
     const newLevel = this.state.level + increment;
     switch(newLevel){
       case 0:
@@ -68,7 +74,7 @@ class Dictaphone extends Component {
             </div>
           </div>
           <div>{finalTranscript}</div>
-          <div>{this.state.sentiment}</div>
+          <div>{this.state.response}</div>
         </div>
       </React.Fragment>
     )
