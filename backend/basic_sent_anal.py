@@ -45,9 +45,9 @@ rating = sentiment_attributes['compound']+0.001
 
 bin_rating = None
 if rating < 0:
-    bin_rating = 0
+    bin_rating = ":("
 elif rating > 0:
-    bin_rating = 1
+    bin_rating = ":)"
 
 print(bin_rating)
 print(concern_flag)
