@@ -5,6 +5,8 @@ import Stage1 from './stage 1.jpg';
 import Stage2 from './stage 2.jpg';
 import PropTypes from "prop-types";
 import SpeechRecognition from "react-speech-recognition";
+import { ReactMic } from 'react-mic';
+
 
 const options = {
   autoStart: false,
