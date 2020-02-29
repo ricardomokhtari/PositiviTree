@@ -98,7 +98,7 @@ class Dictaphone extends Component {
   }
 
   render() {
-    const { finalTranscript, resetTranscript, browserSupportsSpeechRecognition, startListening, stopListening } = this.props
+    const { finalTranscript, browserSupportsSpeechRecognition, startListening, stopListening } = this.props
     if (!browserSupportsSpeechRecognition) {
       return null
     }
@@ -108,7 +108,7 @@ class Dictaphone extends Component {
           <div className = "title">
             Welcome to PositiviTree
           </div>
-          <img className = "images" src = {this.state.image}></img>
+          <img className = "images" src = {this.state.image} alt=""></img>
           <div className="buttons">
             <button onClick={startListening} className = "btn btn-m m-2 btn-success" type="button">Start</button>
             <div className = "button-left">
