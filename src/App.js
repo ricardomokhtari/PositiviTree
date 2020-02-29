@@ -29,7 +29,7 @@ class Dictaphone extends Component {
         <div className = "global">
           <img className = "images" src = {Stage1}></img>
           <button onClick={startListening} className = "btn btn-success" type="button">Start</button>
-          <button onClick={stopListening, resetTranscript, this.handleSend(finalTranscript)} className = "btn btn-success" type="button">Stop</button>
+          <button onClick={stopListening, resetTranscript, () => this.handleSend(finalTranscript)} className = "btn btn-success" type="button">Stop</button>
           <span>{finalTranscript}</span>
         </div>
       </React.Fragment>
