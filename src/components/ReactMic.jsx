@@ -33,12 +33,12 @@ export class Example extends Component {
           className="sound-wave"
           onStop={this.onStop}
           onData={this.onData}
-          strokeColor="#61dafb"
-          backgroundColor="#282c34"
+          strokeColor="black"
+          backgroundColor = "#f8f79a"
           mimeType="audio/wav" />
           <br></br>
-        <button onClick={this.startRecording} type="button">Start</button>
-        <button onClick={this.stopRecording} type="button">Stop</button>
+        <button onClick={this.startRecording} className = "btn btn-success" type="button">Start</button>
+        <button onClick={this.stopRecording} className = "btn btn-success" type="button">Stop</button>
       </div>
     );
   }
