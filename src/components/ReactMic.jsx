@@ -19,9 +19,7 @@ export class Example extends Component {
 
   onData(recordedBlob) {
     console.log('Data:', recordedBlob);
-    var xhr = new XMLHttpRequest()
-    xhr.open('POST', 'http://localhost:3030/')
-    xhr.send(recordedBlob)
+
   }
 
   onStop(recordedBlob) {
@@ -40,8 +38,6 @@ export class Example extends Component {
           backgroundColor = "#f8f79a"
           mimeType="audio/wav" />
           <br></br>
-        <button onClick={this.startRecording} className = "btn btn-success" type="button">Start</button>
-        <button onClick={this.stopRecording} className = "btn btn-success" type="button">Stop</button>
       </div>
     );
   }
