@@ -21,10 +21,6 @@ if rating < 0:
 elif rating > 0:
     bin_rating = 1
 
-<<<<<<< HEAD
-print(bin_rating)
-=======
 print(bin_rating)
 
 sys.stdout.flush()
->>>>>>> 84f2e0045404c62b1f32878030b15beaf9d8c577
