@@ -1,5 +1,4 @@
 const http = require('http');
-var util = require("util");
 var path = require("path");
 // spawn_python.js
 var thing = path.join(__dirname, '..', 'backend/basic_sent_anal.py');
