@@ -87,7 +87,7 @@ class Dictaphone extends Component {
     }
 
     if (this.state.warningLevel > 2) {
-      this.setState({advice: `❤️Remember there's always someone to talk to❤️\nhttps://www.samaritans.org/how-we-can-help/contact-samaritan/`})
+      this.setState({advice: `Remember there's always someone to talk to\nhttps://www.samaritans.org/how-we-can-help/contact-samaritan/`})
     }
   }
 
