@@ -115,6 +115,10 @@ class Dictaphone extends Component {
           <div className = "title">
             Welcome to PositiviTree
           </div>
+          <div className="subtitle">
+            Studies have shown that positive affirmation (saying good things about yourself) <br></br>
+            improves your mood and general mental health, give it a go!
+          </div>
           <img className = "images" src = {this.state.image} alt=""></img>
           <div className="buttons">
             <button onClick={startListening} className = "btn btn-m m-2 btn-success" type="button">Start</button>

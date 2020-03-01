@@ -18,6 +18,14 @@
 .text {
   font-family: Garamond;
   font-size: 40px;
+  justify-content: center;
+}
+
+.subtitle{
+  font-family: Garamond;
+  font-size: 25px;
+  justify-content: center;
+  text-align: center;
 }
 
 .title {
