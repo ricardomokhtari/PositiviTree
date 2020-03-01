@@ -86,7 +86,7 @@ class Dictaphone extends Component {
       this.setState({image: Stage_5_Sad, level: newLevel, response: negativeResponse[Math.floor(Math.random() * negativeResponse.length)]})
     }
 
-    if (this.state.warningLevel > 2) {
+    if (this.state.warningLevel > 0) {
       this.setState({advice: `Remember there's always someone to talk to\nhttps://www.samaritans.org/how-we-can-help/contact-samaritan/`})
     }
   }
