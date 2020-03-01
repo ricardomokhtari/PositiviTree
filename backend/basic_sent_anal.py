@@ -1,7 +1,7 @@
 import sys
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-user_input = sys.argv[1]
+user_input = sys.argv[1].lower().strip().replace('"', '')
 
 sentence = user_input
 
@@ -39,7 +39,7 @@ concern_flag = getRes([sentence],concern_phrases)
 sentiment_object = SentimentIntensityAnalyzer()
 
 sentiment_attributes = sentiment_object.polarity_scores(sentence)
-rating = sentiment_attributes['compound']
+rating = sentiment_attributes['compound']-0.05
 
 bin_rating = None
 if rating <= 0:
@@ -50,5 +50,5 @@ elif rating > 0:
 print(str(bin_rating))
 print(str(concern_flag))
 
-
+print(str(user_input))
 

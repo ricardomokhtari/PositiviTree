@@ -26,7 +26,9 @@ class Dictaphone extends Component {
     sentiment: "",
     image: Stage_1_Happy,
     level: 0,
-    response: ""
+    response: "",
+    advice: "",
+    warningLevel: 0
   }
 
   constructor(props){
@@ -37,7 +39,6 @@ class Dictaphone extends Component {
   updatePlant(){
     let increment = this.state.sentiment;
     increment = parseInt(Number(increment));
-    
     const newLevel = this.state.level + increment;
 
     const positiveResponse = [
@@ -84,14 +85,20 @@ class Dictaphone extends Component {
     }else if(increment === 0 && newLevel === 6){
       this.setState({image: Stage_5_Sad, level: newLevel, response: negativeResponse[Math.floor(Math.random() * negativeResponse.length)]})
     }
+
+    if (this.state.warningLevel > 2) {
+      this.setState({advice: `❤️Remember there's always someone to talk to❤️\nhttps://www.samaritans.org/how-we-can-help/contact-samaritan/`})
+    }
   }
+
 
   handleSend(transcript) {
     var xhr = new XMLHttpRequest()
     xhr.addEventListener('load', () => {
       // update the state of the component with the result here
-      const text = xhr.responseText // extract value returned from chatbot.py
-      this.setState({sentiment: text}, () => {this.updatePlant();})   // update state with this value
+      let text = xhr.responseText.split('\n') // extract value returned from chatbot.py
+      console.log(text)
+      this.setState({sentiment: text[0], warningLevel: this.state.warningLevel + parseInt(Number(text[1]))}, () => {this.updatePlant();})   // update state with this value
     })
     xhr.open('POST', 'http://localhost:3030/')
     xhr.send(JSON.stringify(transcript)) // recordedBlob is string that should be analysed
@@ -120,6 +127,9 @@ class Dictaphone extends Component {
           </div>
           <div className="text">
             Plant: {this.state.response}
+          </div>
+          <div className="text">
+            {this.state.advice}
           </div>
           <div className = "sentiment">
             {this.state.sentiment}
