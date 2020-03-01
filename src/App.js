@@ -128,7 +128,7 @@ class Dictaphone extends Component {
           <div className="text">
             Plant: {this.state.response}
           </div>
-          <div className="text">
+          <div className="advice">
             {this.state.advice}
           </div>
           <div className = "sentiment">
