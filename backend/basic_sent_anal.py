@@ -39,7 +39,7 @@ concern_flag = getRes([sentence],concern_phrases)
 sentiment_object = SentimentIntensityAnalyzer()
 
 sentiment_attributes = sentiment_object.polarity_scores(sentence)
-rating = sentiment_attributes['compound']-0.05
+rating = sentiment_attributes['compound']-0.005
 
 bin_rating = None
 if rating <= 0:

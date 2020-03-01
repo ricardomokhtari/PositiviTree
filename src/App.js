@@ -53,9 +53,9 @@ class Dictaphone extends Component {
     const negativeResponse = [
       "That didn't sound very positive :( - Try again?",
       "That's unfortunate. Let's hear something encouraging.",
-      "What's a good thing that happened today?",
-      "What are you looking forward to over the next month?",
-      "What would you do if you had more freedom?",
+      "Let's focus on something better - What's a good thing that happened today?",
+      "Let's be positive - What are you looking forward to over the next month?",
+      "Let's not talk about bad things - What would you do if you had more freedom?",
   ]
     
     if(increment === 0 && newLevel === 0){
